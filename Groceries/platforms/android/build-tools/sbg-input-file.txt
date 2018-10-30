@@ -1,0 +1,1 @@
+E:\Git-Learn\NativeScript\Groceries\platforms\android\app/src/main/assets/app
