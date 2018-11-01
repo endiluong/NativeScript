@@ -1,0 +1,19 @@
+<th scope="row">{{applicantItem.getId}}</th>
+<td>{{applicantItem.getName}}</td>
+<td>{{applicantItem.getApplyForToString}}</td>
+<td>{{applicantItem.getStage !== null ? applicantItem.getStageToString : ""}}</td>
+<td>{{applicantItem.getEmailAddress}}</td>
+<td>{{applicantItem.getPhone}}</td>
+<td> {{applicantItem.getPhoneScreenInterviewer}}</td>
+<td> {{applicantItem.getPhoneScreenDate| date:'dd/MM/yyyy'}}</td>
+
+<!-- Button part -->
+<td>
+  <!-- <button type="button" class="btn btn-warning btn-my col-md-6 d-inline-block"
+          (click)="getApplicant(i+1,applicant)"
+          >Edit</button> -->
+  <button type="button" class="btn btn-warning btn-my col-md-6 d-inline-block" (click)="updateClicked(applicantItem.getId)">Edit</button>
+</td>
+<td>
+  <button type="button" class="btn btn-danger btn-my col-md-6 d-inline-block" (click)="deleteClicked(applicantItem.getId)">Delete</button>
+</td>

@@ -1,39 +1,31 @@
 import { Component } from "@angular/core";
-import {User} from ".sh"
+import {User} from "./shared/user/user"
+import {UserService} from "./shared/user/user.service";
 
 @Component({
   selector: "my-app",
-  template: `
-          <StackLayout>
-              <Image src="res://logo_login" stretch="none" horizontalAlignment="center"></Image>
-             <TextField
-             [(ngModel)]="email"
-             hint="Email Address" keyboardType="email"
-             autocorrect="false" autocapitalizationType="none"></TextField>
-             <TextField hint="Password" secure="true"></TextField>
-
-            <Button 
-            class="submit-button" 
-            [text]="isLoggingIn ? 'Sign in' : 'Sign up' "
-            (tap)="submit()" >
-            </Button>
-            <Button 
-            [text]="isLoggingIn ? 'Sign up' : 'Back to Login' "
-            (tap)="toggleDisplay()"
-            ></Button>
-          </StackLayout>
-            `,
+  providers: [UserService],
+  templateUrl: 'pages/login/login.html',
   styleUrls: ["pages/login/login-common.css", "pages/login/login.css"]
 })
 export class AppComponent {
-
   email = "desmonmiles@gmail.com";
-  isLoggingIn =true;
+  isLoggingIn = true;
+  user;
+
+  constructor(private userService: UserService){
+    this.user = new User();
+  }
   submit() {
-    console.log("Hello");
-    alert("You are using" + this.email);
+    if(this.isLoggingIn){
+      this.login();
+    }else{
+      this.signup();
+    }
   }
   toggleDisplay(){
     this.isLoggingIn= !this.isLoggingIn;
   }
+  login(){}
+  signup(){this.userService.register(this.user);}
 }

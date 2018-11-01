@@ -1,0 +1,33 @@
+<div class="btn-group mb-4">
+  <button class="btn btn-success" (click)="addApplicant()">Add Applicant</button>
+</div>
+<div class="container">
+  <div class="alert alert-success" *ngIf="alertStatus==='delete' ">
+    <strong>Deleted !</strong> Applicant delete success.
+  </div>
+  <!-- <div class="alert alert-success">
+    <strong>Updated !</strong> Applicant update success.
+  </div> -->
+</div>
+<div class="table-responsive-xl">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Applying for</th>
+        <th scope="col">Stage</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Phone Screen Interview</th>
+        <th scope="col">Phone Screen Date</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr app-applicant-item *ngFor="let applicant of applicants" [applicantItem]="applicant" (selectedUpdate)="updateApplicant($event)"
+        (selectedDelete)="deleteApplicant($event)"></tr>
+    </tbody>
+  </table>
+</div>
